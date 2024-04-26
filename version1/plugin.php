@@ -44,7 +44,7 @@ function ip_detail_page($shorturl) {
     $table_log = YOURLS_DB_TABLE_LOG;
     $outdata   = '';
 
-    $query = $ydb->fetchObjects("SELECT * FROM `$table_log` WHERE shorturl='$shorturl[0]' ORDER BY click_id DESC LIMIT 1000");
+    $query = $ydb->fetchObjects("SELECT * FROM `$table_log` WHERE shorturl='$shorturl[0]' ORDER BY click_id DESC LIMIT 50");
 
     if ($query) {
         foreach ($query as $query_result) {
@@ -81,7 +81,7 @@ function ip_detail_page($shorturl) {
                         <td>'.$gmt_offset.'</td>
 						<td>'.$query_result->country_code.'</td>
 						<td>'.$ip_info['city'].'</td>
-						<td><a href="https://who.is/whois-ip/ip-address/'.$query_result->ip_address.'" target="blank">'.$query_result->ip_address.'</a>'.$me2.'</td>
+						<td><a href="https://www.geolocation.com/?ip='.$query_result->ip_address.'#ipresult" target="blank">'.$query_result->ip_address.'</a>'.$me2.'</td>
 						<td>'.$ua.'</td>
 						<td>'.$wbresult->browser->name . ' ' . $wbresult->browser->version->value.'</td>
 						<td>'.$wbresult->os->name. ' ' . $wbresult->os->version->value.'</td>
